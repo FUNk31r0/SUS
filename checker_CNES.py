@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 import requests
+import time
 import random
 from tqdm import tqdm
 from random import randint
+import fileinput
+_output_ = open(raw_input("\nDIGITE O NOME DO ARQUIVO DE SAIDA COM OS CNES:\nEXEMPLO \"ARQUIVO.txt\"\n\n"), 'w')
 cnes = []
 #REGER PRA FILTRAR ESTABELECIMENTOS NO CONTENT DO REQUEST
 def busca_estabelecimento(content):
@@ -34,9 +37,17 @@ for item in cnes:
 	print "\n \nCNES RESTANTES: %i" %NUMERO_CNES
 	print("\n \nTESTANDO CNES: %s") %item 
 	payload = {'Vcodigo': item} 
-	valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
+	try:
+	 valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
+	except:
+	 print "ERRO AO CONECTAR...\n"
+	 print "RECONECTANDO...\n"
+	 time.sleep(5)
+	 valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
 	consulta_estabelecimento = '\n'.join(busca_estabelecimento(valida_cnes.content))
 	if consulta_estabelecimento == "":
 	 print "\n \nCNES INVALIDO!\n"
 	else:
 	 print "\n \nCNES VALIDO!\n"
+	_output_.write(item)
+	_output_.write("\n")
