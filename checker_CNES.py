@@ -34,7 +34,7 @@ print('\n \nSeparando os CNES aleatoriamente...')
 random.shuffle(cnes)
 #FOR VALIDA CNES
 for item in cnes:
-	os.system('cls')
+	os.system('clear')
 	NUMERO_CNES = NUMERO_CNES-1
 	print "\n \nCNES RESTANTES: %i" %NUMERO_CNES
 	print("\n \nTESTANDO CNES:  %s") %item 
@@ -42,11 +42,11 @@ for item in cnes:
 	try:
 	 valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
 	except:
-	 os.system('cls')
+	 os.system('clear')
 	 print "ERRO AO CONECTAR...\n"
 	 print "RECONECTANDO...\n"
 	 for i in tqdm(range(120)):
-		os.system('cls')
+		os.system('clear')
 		print "RECONECTANDO EM 120 SEGUNDOS...\n AGUARDE..."
 		time.sleep(1)
 	 valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
