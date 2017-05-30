@@ -45,9 +45,9 @@ for item in cnes:
 	 os.system('clear')
 	 print "ERRO AO CONECTAR...\n"
 	 print "RECONECTANDO...\n"
-	 for i in range(120):
+	 for i in range(360):
 		os.system('clear')
-		print "RECONECTANDO EM 120 SEGUNDOS...\n AGUARDE..."
+		print "RECONECTANDO EM 360 SEGUNDOS...\n AGUARDE..."
 		time.sleep(1)
 	 valida_cnes = requests.get(url_valida_cnes, params=payload, headers=headers)
 	consulta_estabelecimento = '\n'.join(busca_estabelecimento(valida_cnes.content))
