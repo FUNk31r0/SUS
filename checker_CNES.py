@@ -2,9 +2,9 @@
 # -*- coding: UTF-8 -*-
 import requests
 import os
+from tqdm import tqdm
 import time
 import random
-from tqdm import tqdm
 from random import randint
 import fileinput
 _output_ = open(raw_input("\nDIGITE O NOME DO ARQUIVO DE SAIDA COM OS CNES:\nEXEMPLO \"ARQUIVO.txt\"\n\n"), 'w')
@@ -45,7 +45,7 @@ for item in cnes:
 	 os.system('clear')
 	 print "ERRO AO CONECTAR...\n"
 	 print "RECONECTANDO...\n"
-	 for i in tqdm(range(120)):
+	 for i in range(120):
 		os.system('clear')
 		print "RECONECTANDO EM 120 SEGUNDOS...\n AGUARDE..."
 		time.sleep(1)
